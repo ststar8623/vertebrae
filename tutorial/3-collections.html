@@ -77,6 +77,12 @@ var Comments = Backbone.Collection.extend({
   model: Comment
 });
 
+// var comment1 = new Comment('Hi', 1);
+// var comment2 = new Comment('bye', 2);
+// var comment3 = new Comment('yo', 3);
+// var commentss = new Comments([comment1, comment2, comment3]);
+// var commentView = new CommentView({ collection: commentss });
+// $('body').append(commentView.render());
 /* The reason we want a collection is to track our models.
  * Let's use this collection to:
  * - display every comment in it
@@ -111,6 +117,7 @@ var CommentsView = Backbone.View.extend({
      * Remember, we have the underscore functions: */
     this.$el.find('ul').append(this.collection.map(function(comment) {
       // YOUR CODE HERE
+      return '<li>' + comment.get('message') + ', ' + comment.get('votes') + '</li>';
     }));
 
     return this.$el;
@@ -134,7 +141,7 @@ var comments = new Comments(commentList);
 var commentsView = new CommentsView({ collection: comments });
 
 // Append it to the page (uncomment this when you are ready):
-// $('body').append(commentsView.render());
+$('body').append(commentsView.render());
     </script>
   </body>
 </html>
